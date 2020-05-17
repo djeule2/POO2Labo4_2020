@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Buffy.cpp
+Buffy.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Buffy.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Buffy.h
+Humanoid.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humanoid.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Grille.cpp
+Grille.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Grille.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Grille.h
+Humanoid.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humanoid.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humain.cpp
+Humain.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humain.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humain.h
+Humanoid.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humanoid.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humanoid.cpp
+Humanoid.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humanoid.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humanoid.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Vampire.cpp
+Vampire.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Vampire.h
+
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Vampire.h
+Humanoid.h
+C:/Users/Lenovo T50s/Documents/POO2/Labo/POO2Labo4_2020/Humanoid.h
+
