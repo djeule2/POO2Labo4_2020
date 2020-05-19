@@ -5,17 +5,22 @@
 #ifndef POO2LABO4_2020_GRILLE_H
 #define POO2LABO4_2020_GRILLE_H
 
+#include <vector>
+#include <iostream>
 #include "Humanoid.h"
 
-enum ValeurGrille {vide, Humanoid };
+using namespace std;
+
+//enum ValeurGrille {vide, Humanoid };
 class Grille {
 public:
     Grille(int largeurGrille, int hauteurGrille);
-    void displayGrille(int largeur, int hauteur);
+    void initializeGrid()const ;
+    void displayGrille();
 private:
     int _largeurGrille;
     int _hauteurGrille;
-    ValeurGrille* grille;
+    vector<vector<char >> grid;
 };
 
 
