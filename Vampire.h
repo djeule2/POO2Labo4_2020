@@ -9,6 +9,9 @@
 #include "Humanoid.h"
 
 class Vampire: public Humanoid {
+private:
+public:
+    Vampire(int x, int y);
 
 };
 

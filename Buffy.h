@@ -9,6 +9,9 @@
 #include "Humanoid.h"
 
 class Buffy: public Humanoid {
+private:
+public:
+    Buffy(int x, int y);
 
 };
 

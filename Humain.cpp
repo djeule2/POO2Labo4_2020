@@ -3,3 +3,7 @@
 //
 
 #include "Humain.h"
+using namespace std;
+Humain::Humain( int x, int y):Humanoid('h', x, y){
+}
+

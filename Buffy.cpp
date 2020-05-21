@@ -3,3 +3,5 @@
 //
 
 #include "Buffy.h"
+Buffy::Buffy(int x, int y):Humanoid('B', x, y){
+}

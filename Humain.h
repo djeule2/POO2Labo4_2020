@@ -8,7 +8,12 @@
 
 #include "Humanoid.h"
 
+
 class Humain: public Humanoid {
+private:
+public:
+    Humain( int x, int y);
+char getName();
 
 };
 
