@@ -5,5 +5,14 @@
 #include "Vampire.h"
 Vampire::Vampire(int x, int y): Humanoid('v', x, y){
 }
+void Vampire::setAction(Field& field){
 
+}
+void Vampire::executeAction(Field& field){
+
+}
+
+bool Vampire::isAlive(){
+
+}
 

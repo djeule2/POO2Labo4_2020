@@ -6,7 +6,13 @@
 #define POO2LABO4_2020_ACTION_H
 
 
+#include "Field.h"
+
 class Action {
+private:
+public:
+    void execute(Field & field);
+
 
 };
 

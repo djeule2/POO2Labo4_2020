@@ -6,7 +6,18 @@
 #define POO2LABO4_2020_FIELD_H
 
 
+#include "Grille.h"
+#include <list>
+
 class Field {
+public:
+    int nexTurn();
+    Humanoid& humanoidNeighbor(Humanoid& humanoid)const ;
+
+private:
+    unsigned turn = 0
+    Grille* grid;
+    list <Humanoid*> humanoids;
 
 };
 

@@ -7,3 +7,14 @@ using namespace std;
 Humain::Humain( int x, int y):Humanoid('h', x, y){
 }
 
+void Humain::setAction(Field& field){
+
+}
+void Humain::executeAction(Field& field){
+
+}
+
+bool Humain::isAlive(){
+
+}
+

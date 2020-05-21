@@ -15,7 +15,7 @@ using namespace std;
 class Grille {
 public:
     Grille(int largeurGrille, int hauteurGrille);
-    void initializeGrid()const ;
+    void initializeGrid();
     void displayGrille();
 private:
     int _largeurGrille;

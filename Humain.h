@@ -13,7 +13,9 @@ class Humain: public Humanoid {
 private:
 public:
     Humain( int x, int y);
-char getName();
+    void setAction(Field& field);
+    void executeAction(Field& field);
+    bool isAlive();
 
 };
 

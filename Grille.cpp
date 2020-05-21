@@ -10,19 +10,24 @@ Grille::Grille(int largeurGrille, int hauteurGrille): _largeurGrille(largeurGril
     grid=vector<vector<char>>(hauteurGrille, vector<char >(largeurGrille));
     this->initializeGrid();
 }
-void Grille::initializeGrid()const {
 
-}
-void Grille::displayGrille() {
-    cout <<'+'<< setfill('-') << setw(_largeurGrille) <<"+"<< "\n";
+void Grille::initializeGrid(){
     for(int row= 0; row<_hauteurGrille; row++){
-        cout<<"¦";
+        for (int column=0; column<_largeurGrille; column++){
+            grid[row][column]=' ';
+        }
+    }
+}
+
+void Grille::displayGrille() {
+    cout <<'+'<< setfill('-') << setw(_largeurGrille+1) <<"+"<< endl;
+    for(int row= 0; row<_hauteurGrille; row++){
+        cout<<":";
         for (int column=0; column<_largeurGrille; column++){
             cout << grid[row][column];
-
         }
-        cout <<"|"<<"\n";
+        cout <<":"<<endl;
     }
-    cout <<'+'<< setfill('-') << setw(_largeurGrille) <<"+"<< "\n";
+    cout <<'+'<< setfill('-') << setw(_largeurGrille+1) <<"+"<<endl;
 
 }

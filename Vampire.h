@@ -12,6 +12,10 @@ class Vampire: public Humanoid {
 private:
 public:
     Vampire(int x, int y);
+    void setAction(Field& field);
+    void executeAction(Field& field);
+
+    bool isAlive();
 
 };
 
