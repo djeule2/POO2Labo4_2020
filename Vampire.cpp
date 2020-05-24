@@ -12,7 +12,4 @@ void Vampire::executeAction(Field& field){
 
 }
 
-bool Vampire::isAlive(){
-
-}
 

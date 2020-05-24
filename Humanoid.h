@@ -5,26 +5,27 @@
 #ifndef POO2LABO4_2020_HUMANOID_H
 #define POO2LABO4_2020_HUMANOID_H
 
+//#include "Action.h"
 
-#include "Field.h"
-
+class Field;
 class Humanoid {
 private:
     char  _name;
     int _xPosition;
     int _yPosition;
+    bool _isalive =true;
+    //Action* action;
 public:
     Humanoid(char name, int x, int y);
-    virtual char getName()const = 0;
+    virtual char getName()const;
     virtual int getxPosition()const;
     virtual int getyPosition()const;
     virtual void setxPosition(int x);
     virtual void setyPosition(int y);
+    virtual void setisAlive(bool islive);
+    virtual  bool isAlive();
     virtual void setAction(Field& field)=0;
     virtual void executeAction(Field& field)=0;
-    virtual bool bool isAlive()=0;
-
-
 };
 
 

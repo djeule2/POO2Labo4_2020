@@ -17,10 +17,19 @@ public:
     Grille(int largeurGrille, int hauteurGrille);
     void initializeGrid();
     void displayGrille();
+    int getLargeurGrille();
+    int getHauteurGrille();
+    void setLargeurGrille(int largeur);
+    void setHauteurGrille(int hauteur);
+    void loadHumanoidGrid(Humanoid& humanoid);
+
+    static const int BORNE_INF = 1;
+    static const int BORNE_SUP = 100;
 private:
     int _largeurGrille;
     int _hauteurGrille;
     vector<vector<char >> grid;
+
 };
 
 

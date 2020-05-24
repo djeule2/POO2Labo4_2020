@@ -14,7 +14,4 @@ void Humain::executeAction(Field& field){
 
 }
 
-bool Humain::isAlive(){
-
-}
 

@@ -15,7 +15,6 @@ public:
     void setAction(Field& field);
     void executeAction(Field& field);
 
-    bool isAlive();
 
 };
 

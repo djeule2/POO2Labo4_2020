@@ -15,7 +15,7 @@ public:
     Humain( int x, int y);
     void setAction(Field& field);
     void executeAction(Field& field);
-    bool isAlive();
+
 
 };
 

@@ -22,3 +22,10 @@ void Humanoid::setxPosition(int x){
 void Humanoid::setyPosition(int y){
     _yPosition = y;
 };
+
+void Humanoid::setisAlive(bool live){
+    _isalive=live;
+}
+ bool Humanoid::isAlive(){
+     return _isalive;
+}

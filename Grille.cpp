@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Grille.h"
 using namespace std;
+
 Grille::Grille(int largeurGrille, int hauteurGrille): _largeurGrille(largeurGrille), _hauteurGrille(hauteurGrille) {
     grid=vector<vector<char>>(hauteurGrille, vector<char >(largeurGrille));
     this->initializeGrid();
@@ -29,5 +30,20 @@ void Grille::displayGrille() {
         cout <<":"<<endl;
     }
     cout <<'+'<< setfill('-') << setw(_largeurGrille+1) <<"+"<<endl;
+}
 
+int Grille::getLargeurGrille(){
+    return _largeurGrille;
+}
+int Grille::getHauteurGrille(){
+    return _hauteurGrille;
+}
+void Grille::setLargeurGrille(int largeur){
+    _largeurGrille=largeur;
+}
+void Grille::setHauteurGrille(int hauteur){
+    _hauteurGrille = hauteur;
+}
+void Grille::loadHumanoidGrid(Humanoid& humanoid){
+    grid[humanoid.getxPosition()][humanoid.getyPosition()]=humanoid.getName();
 }
