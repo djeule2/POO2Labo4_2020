@@ -63,6 +63,9 @@ public:
     void startGame();
     void createHumanoid(int nbreVampire, int nbrHuman);
     void loadListHumanoidGrid();
+    bool content (Humanoid* humanoid);
+    Humanoid& findNearestHumanoid(Humanoid* humanoid);
+    double distanceBetweenHumanoid(const Humanoid* humanoidfirst, const Humanoid* humanoidsecond);
 
 private:
     unsigned turn = 0;

@@ -2,6 +2,7 @@
 // Created by Lenovo T50s on 14.05.2020.
 //
 
+#include <cmath>
 #include "Field.h"
 #include "Buffy.h"
 #include "Humain.h"
@@ -13,9 +14,9 @@ Field::Field(){
     int nbrVambire;
     int nbrHumain;
     readControl("Largeur Grille", Grille::BORNE_INF, Grille::BORNE_SUP, largeurGrille);
-    readControl("HauteurGrille", Grille::BORNE_INF, Grille::BORNE_SUP, hauteurGrille);
-    readControl("Nombre de humain", 0,largeurGrille*hauteurGrille-1, nbrHumain);
-    readControl("Nombre de Vampire", 0, largeurGrille*hauteurGrille-nbrHumain-1, nbrVambire);
+    readControl("Hauteur Grille", Grille::BORNE_INF, Grille::BORNE_SUP, hauteurGrille);
+    readControl("Nombres humains", 0,largeurGrille*hauteurGrille-1, nbrHumain);
+    readControl("Nombres Vampires", 0, largeurGrille*hauteurGrille-nbrHumain-1, nbrVambire);
     grid = new Grille(largeurGrille, hauteurGrille);
     createHumanoid(nbrHumain, nbrVambire);
     loadListHumanoidGrid();
@@ -23,28 +24,29 @@ Field::Field(){
 
 }
 
-void Field::createHumanoid(int nbrVampire, int nbrHuman){
+void Field::createHumanoid(int nbrHuman, int nbrVampire){
     int xPosition;
     int yPosition;
-    srand((unsigned int)time_t(0));
+    srand((unsigned int)time_t(NULL));
     //creation du Buffy
     xPosition=rand()%grid->getHauteurGrille();
     yPosition=rand()%grid->getLargeurGrille();
-    _humanoids.push_back(new Buffy(xPosition, yPosition));
+    addHumanoid(new Buffy(xPosition, yPosition));
 
     for(int i=0; i< nbrHuman; i++){
         //creation de Humain
         xPosition=rand()%grid->getHauteurGrille();
         yPosition=rand()%grid->getLargeurGrille();
-        _humanoids.push_back(new Humain(xPosition, yPosition));
+        addHumanoid(new Humain(xPosition, yPosition));
     }
 
-    for(int i=0; i< nbrVampire; i++){
+    for(int j=0; j< nbrVampire; j++){
         //creation Vampire
         xPosition=rand()%grid->getHauteurGrille();
         yPosition=rand()%grid->getLargeurGrille();
-        _humanoids.push_back(new Vampire(xPosition, yPosition));
+        addHumanoid(new Vampire(xPosition, yPosition));
     }
+
 
 }
 
@@ -78,11 +80,11 @@ void Field::addHumanoid(Humanoid* humanoid){
 
 void Field::handleCommand(const string &cmd){
     switch (cmd.at(0)){
-        case QUIT:
-            break;
         case NEXT:
             break;
         case STATTISTIQUE:
+            break;
+        case QUIT:
             break;
         default:
             cout<<"commande invalide"<<endl;
@@ -93,8 +95,8 @@ void Field::handleCommand(const string &cmd){
 
 
 void Field::showMenu(){
-    cout<<QUIT<<">quit ";
-    cout<<STATTISTIQUE<<">tatisties";
+    cout<<QUIT<<">quit :";
+    cout<<STATTISTIQUE<<">tatisties :";
     cout<<NEXT<< ">ext :";
 }
 
@@ -113,6 +115,47 @@ void Field::readControl (const string msg, const int borneInf, const int borneSu
     }
 }
 
+bool Field::content (Humanoid* humanoid){
+    for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
+        if(*it == humanoid){
+            return true;
+        }
+        return false;
+    }
+
+}
+
+double Field::distanceBetweenHumanoid( const Humanoid* humanoidfirst, const Humanoid* humanoidsecond) {
+    double result;
+    result = sqrt(pow((humanoidfirst->getxPosition()-humanoidsecond->getxPosition()), 2)+
+            pow((humanoidfirst->getyPosition()-humanoidsecond->getyPosition()),2 ));
+    return result;
+}
+
+Humanoid& Field::findNearestHumanoid(Humanoid* humanoid){
+    double shortdistance=0.0;
+    double distance;
+    Humanoid* tempHumanoid ;
+
+    for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
+        distance = distanceBetweenHumanoid(humanoid, *it);
+        if(distance<shortdistance) {
+            shortdistance = distance;
+            tempHumanoid = *it;
+        }
+
+    }
+    return *tempHumanoid;
+}
+
 void Field::startGame(){
 
+
+    string commande;
+    do{
+        cout<< turn << ">";
+        getline(cin, commande);
+
+        handleCommand(commande);
+    }while (commande.at(0) != QUIT);
 }
