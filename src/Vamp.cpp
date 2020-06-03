@@ -5,6 +5,7 @@
 #include "Vamp.h"
 #include "Utils.h"
 #include "Vampire.h"
+#include "Humanoid.h"
 
 void Vamp::execute(Field &field) {
     if(Utils::getRandomNumber(0, 1) == 1) {

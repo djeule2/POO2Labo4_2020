@@ -71,10 +71,10 @@ Humanoid& Field::findNearestHumanoid(Humanoid* humanoid){
     return *tempHumanoid;
 }
 
-Humanoid &Field::findNearestVampire(Humanoid *humanoid) {
-    return <#initializer#>;
+Humanoid* Field::findNearestVampire(Humanoid *humanoid) {
+    return nullptr;
 }
 
-Humanoid &Field::findClosestHuman(Humanoid *humanoid) {
-    return <#initializer#>;
+Humanoid* Field::findClosestHuman(Humanoid *humanoid) {
+    return nullptr;
 }
