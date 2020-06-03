@@ -8,6 +8,9 @@
 #include "Action.h"
 #include "Field.h"
 
+class Field;
+class Action;
+
 class Humanoid {
 private:
     char _name;

@@ -10,13 +10,16 @@
 
 class Humanoid;
 
+class Field;
+
 class Action {
 public:
-    virtual void execute(Field & field) = 0;
+    virtual void execute(Field &field) = 0;
+
 protected :
     explicit Action(Humanoid *target) : target(target) {
 
-}
+    }
     Humanoid *target;
 };
 

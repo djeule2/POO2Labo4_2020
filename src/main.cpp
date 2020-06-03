@@ -1,13 +1,12 @@
 #include <iostream>
-#include "Grille.h"
-#include "Field.h"
+#include "GameManager.h"
 
 int main() {
 
    // Grille* grille = new Grille(50, 25);
     //grille->displayGrille();
-    Field* field = new Field();
-    field->startGame();
+    GameManager gameManager();
+
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }

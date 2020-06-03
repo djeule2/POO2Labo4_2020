@@ -10,7 +10,9 @@
 #include <list>
 #include <limits>
 #include "Humanoid.h"
+class Humanoid;
 
+using namespace std;
 class Field {
 public:
     Field();
@@ -35,42 +37,14 @@ public:
      */
     Humanoid& humanoidNeighbor(Humanoid& humanoid)const ;
 
-    /**
-     * Méthode qui agit selon la commande de l'utilisateur
-     * @param cmd commande de l'utilisateur
-     */
-    void handleCommand(const string &cmd);
 
-
-    /**
-     * Méthode d'affichage du menu
-     */
-    static void showMenu();
-
-
-    /**
-     *
-     * @param msg
-     * @param borneInf
-     * @param borneSup
-     * @param val
-     * @return
-     */
-   void readControl (string msg, const int borneInf, const int borneSup, int &val);
-
-    /**
-     * Méthode qui lance le debut du jeu;
-     */
-    void startGame();
-    void createHumanoid(int nbreVampire, int nbrHuman);
-    void loadListHumanoidGrid();
+    list<Humanoid*> getListHumanoid();
     bool content (Humanoid* humanoid);
     Humanoid& findNearestHumanoid(Humanoid* humanoid);
     double distanceBetweenHumanoid(const Humanoid* humanoidfirst, const Humanoid* humanoidsecond);
 
 private:
     unsigned turn = 0;
-    Grille* grid;
     std::list <Humanoid*> _humanoids;
     static const char QUIT='q', STATTISTIQUE= 's', NEXT= 'n';
 
