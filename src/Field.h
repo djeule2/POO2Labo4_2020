@@ -40,9 +40,9 @@ public:
 
     list<Humanoid*> getListHumanoid();
     bool content (Humanoid* humanoid);
-    Humanoid& findNearestHumanoid(Humanoid* humanoid);
-    Humanoid& findNearestVampire(Humanoid* humanoid);
-    Humanoid& findClosestHuman(Humanoid* humanoid);
+    Humanoid* findNearestHumanoid(Humanoid* humanoid);
+    Humanoid* findNearestVampire(Humanoid* humanoid);
+    Humanoid* findClosestHuman(Humanoid* humanoid);
 
     double distanceBetweenHumanoid(const Humanoid* humanoidfirst, const Humanoid* humanoidsecond);
 
