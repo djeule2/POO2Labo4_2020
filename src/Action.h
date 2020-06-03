@@ -7,12 +7,12 @@
 
 
 #include "Field.h"
-
+class Field;
 class Action {
 public:
-    virtual void execute(Field & field) = 0;
+    virtual void execute(Field & field)=0;
 protected :
-    Humanoid *target;
+    //Humanoid* target;
 };
 
 

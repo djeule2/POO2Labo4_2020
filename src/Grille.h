@@ -10,7 +10,7 @@
 #include "Humanoid.h"
 
 using namespace std;
-
+class Humanoid;
 //enum ValeurGrille {vide, Humanoid };
 class Grille {
 public:
@@ -21,7 +21,7 @@ public:
     int getHauteurGrille();
     void setLargeurGrille(int largeur);
     void setHauteurGrille(int hauteur);
-    void loadHumanoidGrid(Humanoid& humanoid);
+    void updateGrid(Humanoid& humanoid);
 
     static const int BORNE_INF = 1;
     static const int BORNE_SUP = 100;

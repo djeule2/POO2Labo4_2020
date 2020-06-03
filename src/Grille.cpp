@@ -44,6 +44,6 @@ void Grille::setLargeurGrille(int largeur){
 void Grille::setHauteurGrille(int hauteur){
     _hauteurGrille = hauteur;
 }
-void Grille::loadHumanoidGrid(Humanoid& humanoid){
+void Grille::updateGrid(Humanoid& humanoid){
     grid[humanoid.getxPosition()][humanoid.getyPosition()]=humanoid.getName();
 }
