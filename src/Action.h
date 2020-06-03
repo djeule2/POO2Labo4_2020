@@ -9,6 +9,7 @@
 #include "Field.h"
 
 class Humanoid;
+class Field;
 
 class Field;
 

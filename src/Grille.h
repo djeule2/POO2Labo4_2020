@@ -9,8 +9,8 @@
 #include <iostream>
 #include "Humanoid.h"
 
-using namespace std;
 class Humanoid;
+using namespace std;
 //enum ValeurGrille {vide, Humanoid };
 class Grille {
 public:
