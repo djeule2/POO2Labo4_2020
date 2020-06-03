@@ -78,12 +78,13 @@ Humanoid* Field::findNearestVampire(Humanoid *humanoid) {
     Humanoid* tempHumanoid = nullptr ;
 
     for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
+        distance = distanceBetweenHumanoid(humanoid, *it);
         if((*it)->getName()=='v') {
             if(first==0){
                 shortdistance=distanceBetweenHumanoid(humanoid, *it);
                 tempHumanoid = *it;
                 first++;
-            } else if(distance<=shortdistance) {
+            } else if(distance<shortdistance) {
                 shortdistance = distance;
                 tempHumanoid = *it;
             }
@@ -99,12 +100,13 @@ Humanoid* Field::findClosestHuman(Humanoid *humanoid) {
     Humanoid* tempHumanoid = nullptr ;
 
     for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
+        distance = distanceBetweenHumanoid(humanoid, *it);
         if((*it)->getName()=='h') {
             if(first==0){
                 shortdistance=distanceBetweenHumanoid(humanoid, *it);
                 tempHumanoid = *it;
                 first++;
-            } else if(distance<=shortdistance) {
+            } else if(distance<shortdistance) {
                     shortdistance = distance;
                     tempHumanoid = *it;
                 }
