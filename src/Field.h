@@ -9,6 +9,7 @@
 #include "Grille.h"
 #include <list>
 #include <limits>
+
 class Humanoid;
 class Field {
 public:
@@ -70,7 +71,7 @@ public:
 private:
     unsigned turn = 0;
     Grille* grid;
-    list <Humanoid*> _humanoids;
+    std::list <Humanoid*> _humanoids;
     static const char QUIT='q', STATTISTIQUE= 's', NEXT= 'n';
 
 };

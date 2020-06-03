@@ -12,20 +12,20 @@ char Humanoid::getName()const {
 
 int Humanoid::getxPosition()const{
     return _xPosition;
-};
+}
 int Humanoid::getyPosition()const{
     return _yPosition;
-};
+}
 void Humanoid::setxPosition(int x){
     _xPosition = x;
-};
+}
 void Humanoid::setyPosition(int y){
     _yPosition = y;
-};
-
-void Humanoid::setisAlive(bool live){
-    _isalive=live;
 }
- bool Humanoid::isAlive(){
-     return _isalive;
+bool Humanoid::isAlive(){
+     return _isAlive;
+}
+
+void Humanoid::kill() {
+    _isAlive = false;
 }

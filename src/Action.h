@@ -9,11 +9,10 @@
 #include "Field.h"
 
 class Action {
-private:
 public:
-    void execute(Field & field);
-
-
+    virtual void execute(Field & field) = 0;
+protected :
+    Humanoid *target;
 };
 
 
