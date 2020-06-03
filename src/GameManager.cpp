@@ -14,7 +14,13 @@ GameManager::GameManager() {
     _display = new DisplayField(_width, _height);
     createHumanoid(_nbrVambire, _nbrHumain);
     updateDisplay();
+
     _display->display();
+}
+
+GameManager::~GameManager(){
+    delete _field;
+    delete _display;
 }
 
 void GameManager::initializeGame() {
@@ -41,9 +47,11 @@ void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {
 }
 
 void GameManager::updateDisplay() {
-    for (_List_iterator<Humanoid *> it = _field->getListHumanoid().begin();
-         it != _field->getListHumanoid().end(); ++it) {
-        _display->update(**it);
+    list<Humanoid*>humanoids = _field->getListHumanoid();
+    for (_List_iterator<Humanoid *> it = humanoids.begin();
+         it != humanoids.end(); ++it) {
+
+         _display->update(**it);
     }
 }
 
@@ -100,7 +108,7 @@ void GameManager::handleCommand(const string &cmd) {
 
 }
 
-void GameManager::startGame() {
+void GameManager::start() {
     string commande;
 
     do {

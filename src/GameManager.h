@@ -10,8 +10,9 @@
 class GameManager {
 public:
     GameManager();
+    ~GameManager();
     void initializeGame();
-    void startGame();
+    void start();
     void createHumanoid(int nbreVampire, int nbrHuman);
     void updateDisplay();
     void readControl (const string msg, const int borneInf, const int borneSup, int &val);
