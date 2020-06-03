@@ -6,7 +6,7 @@
 #define POO2LABO4_2020_UTILS_H
 
 using namespace std;
-class utils {
+class Utils {
 public :
     static int getRandomNumber(int from, int to);
 

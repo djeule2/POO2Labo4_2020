@@ -7,11 +7,10 @@
 
 
 #include "Action.h"
-#include "Humain.h"
 
-class vamp : public Action {
+class Vamp : public Action {
 public :
-    explicit vamp(Humanoid * target);
+    explicit Vamp(Humanoid * target);
     void execute(Field & field) override;
 };
 

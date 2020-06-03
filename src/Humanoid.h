@@ -6,8 +6,7 @@
 #define POO2LABO4_2020_HUMANOID_H
 
 #include "Action.h"
-
-class Field;
+#include "Field.h"
 
 class Humanoid {
 private:

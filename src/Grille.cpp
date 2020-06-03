@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <iostream>
 #include "Grille.h"
+
 using namespace std;
 
 Grille::Grille(int largeurGrille, int hauteurGrille): _largeurGrille(largeurGrille), _hauteurGrille(hauteurGrille) {

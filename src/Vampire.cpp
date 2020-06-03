@@ -3,12 +3,13 @@
 //
 
 #include "Vampire.h"
+
 Vampire::Vampire(int x, int y): Humanoid('v', x, y){
 }
 void Vampire::setAction(Field& field){
     //get the nearest human
     //if he's further than sqrt(2) -> chase him
-    //else if closer than sqrt(2) try to vamp the nearest human
+    //else if closer than sqrt(2) try to Vamp the nearest human
     //else (sleep waiting buffy kills him)
 }
 void Vampire::executeAction(Field& field){

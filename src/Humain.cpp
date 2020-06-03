@@ -8,7 +8,7 @@ Humain::Humain( int x, int y):Humanoid('h', x, y){
 }
 
 void Humain::setAction(Field& field){
-    // move randomly
+    // Move randomly
 }
 void Humain::executeAction(Field& field){
 

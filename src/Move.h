@@ -8,9 +8,12 @@
 
 #include "Action.h"
 
-class move : public Action {
-    move(Humanoid* target, int xDestination, int yDestination);
+class Move : public Action {
+    Move(Humanoid* target, int xDestination, int yDestination);
     void execute(Field &field) override;
+private :
+    int xDestination;
+    int yDestination;
 };
 
 

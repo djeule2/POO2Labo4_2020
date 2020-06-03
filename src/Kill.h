@@ -8,8 +8,8 @@
 
 #include "Action.h"
 
-class kill : public Action {
-    explicit kill(Humanoid *target);
+class Kill : public Action {
+    explicit Kill(Humanoid *target);
     void execute(Field &field) override;
 };
 

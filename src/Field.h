@@ -9,8 +9,8 @@
 #include "Grille.h"
 #include <list>
 #include <limits>
+#include "Humanoid.h"
 
-class Humanoid;
 class Field {
 public:
     Field();
