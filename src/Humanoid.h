@@ -28,9 +28,7 @@ public:
 
     virtual int getyPosition() const;
 
-    virtual void setxPosition(int x);
-
-    virtual void setyPosition(int y);
+    virtual void setPosition(int x, int y);
 
     virtual bool isAlive();
 

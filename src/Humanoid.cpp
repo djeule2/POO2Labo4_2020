@@ -16,10 +16,8 @@ int Humanoid::getxPosition()const{
 int Humanoid::getyPosition()const{
     return _yPosition;
 }
-void Humanoid::setxPosition(int x){
+void Humanoid::setPosition(int x, int y){
     _xPosition = x;
-}
-void Humanoid::setyPosition(int y){
     _yPosition = y;
 }
 bool Humanoid::isAlive(){

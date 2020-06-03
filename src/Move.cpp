@@ -11,5 +11,5 @@ Move::Move(Humanoid* target, int xDestination, int yDestination) : Action(target
 }
 
 void Move::execute(Field &field) {
-
+    target->setPosition(xDestination, yDestination);
 }

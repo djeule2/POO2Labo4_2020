@@ -9,4 +9,5 @@ Kill::Kill(Humanoid *target) : Action(target) {
 }
 
 void Kill::execute(Field &field) {
+    target->kill();
 }
