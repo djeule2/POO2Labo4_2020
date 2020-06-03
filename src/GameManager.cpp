@@ -3,48 +3,47 @@
 //
 
 #include "GameManager.h"
-#include "GameManager.h"
 #include "Buffy.h"
-#include "Humain.h"
+#include "Human.h"
 #include "Vampire.h"
 #include "Utils.h"
 
 GameManager::GameManager() {
     _field = new Field();
     initializeGame();
-    _grille = new Grille(_largeurGrille, _hauteurGrille);
+    _display = new DisplayField(_width, _height);
     createHumanoid(_nbrVambire, _nbrHumain);
-    loadListHumanoidGrid();
-    _grille->displayGrille();
+    updateDisplay();
+    _display->display();
 }
 
 void GameManager::initializeGame() {
-    readControl("Largeur Grille", Grille::BORNE_INF, Grille::BORNE_SUP, _largeurGrille);
-    readControl("Hauteur Grille", Grille::BORNE_INF, Grille::BORNE_SUP, _hauteurGrille);
-    readControl("Nombres humains", 0, _largeurGrille * _hauteurGrille - 1, _nbrHumain);
-    readControl("Nombres Vampires", 0, _largeurGrille * _hauteurGrille - _nbrHumain - 1, _nbrVambire);
+    readControl("Largeur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, _width);
+    readControl("Hauteur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, _height);
+    readControl("Nombres humains", 0, _width * _height - 1, _nbrHumain);
+    readControl("Nombres Vampires", 0, _width * _height - _nbrHumain - 1, _nbrVambire);
 }
 
 void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {
     //creation du Buffy
-    _field->addHumanoid(new Buffy(Utils::getRandomNumber(0, _largeurGrille),
-                                  Utils::getRandomNumber(0, _hauteurGrille)));
+    _field->addHumanoid(new Buffy(Utils::getRandomNumber(0, _width),
+                                  Utils::getRandomNumber(0, _height)));
     for (int i = 0; i < nbrHuman; i++) {
-        //creation de Humain
-        _field->addHumanoid(new Humain(Utils::getRandomNumber(0, _largeurGrille),
-                                       Utils::getRandomNumber(0, _hauteurGrille)));
+        //creation de Human
+        _field->addHumanoid(new Human(Utils::getRandomNumber(0, _width),
+                                      Utils::getRandomNumber(0, _height)));
     }
     for (int j = 0; j < nbreVampire; j++) {
         //creation Vampire
-        _field->addHumanoid(new Vampire(Utils::getRandomNumber(0, _largeurGrille),
-                                        Utils::getRandomNumber(0, _hauteurGrille)));
+        _field->addHumanoid(new Vampire(Utils::getRandomNumber(0, _width),
+                                        Utils::getRandomNumber(0, _height)));
     }
 }
 
-void GameManager::loadListHumanoidGrid() {
+void GameManager::updateDisplay() {
     for (_List_iterator<Humanoid *> it = _field->getListHumanoid().begin();
          it != _field->getListHumanoid().end(); ++it) {
-        _grille->updateGrid(**it);
+        _display->update(**it);
     }
 }
 
@@ -58,11 +57,11 @@ bool GameManager::isGameOver() {
 }
 
 int GameManager::getLageurGrille() {
-    return _largeurGrille;
+    return _width;
 }
 
 int GameManager::getHauteurGrille() {
-    return _hauteurGrille;
+    return _height;
 }
 
 void GameManager::showMenu() {

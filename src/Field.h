@@ -6,7 +6,7 @@
 #define POO2LABO4_2020_FIELD_H
 
 
-#include "Grille.h"
+#include "DisplayField.h"
 #include <list>
 #include <limits>
 #include "Humanoid.h"
@@ -41,6 +41,9 @@ public:
     list<Humanoid*> getListHumanoid();
     bool content (Humanoid* humanoid);
     Humanoid& findNearestHumanoid(Humanoid* humanoid);
+    Humanoid& findNearestVampire(Humanoid* humanoid);
+    Humanoid& findClosestHuman(Humanoid* humanoid);
+
     double distanceBetweenHumanoid(const Humanoid* humanoidfirst, const Humanoid* humanoidsecond);
 
 private:

@@ -2,10 +2,8 @@
 #include "GameManager.h"
 
 int main() {
-
-   // Grille* grille = new Grille(50, 25);
-    //grille->displayGrille();
-    GameManager gameManager();
+    GameManager gm;
+    gm.start();
 
     std::cout << "Hello, World!" << std::endl;
     return 0;

@@ -5,7 +5,7 @@
 #include <cmath>
 #include "Field.h"
 #include "Buffy.h"
-#include "Humain.h"
+#include "Human.h"
 #include "Vampire.h"
 
 Field::Field(){}
@@ -69,4 +69,12 @@ Humanoid& Field::findNearestHumanoid(Humanoid* humanoid){
 
     }
     return *tempHumanoid;
+}
+
+Humanoid &Field::findNearestVampire(Humanoid *humanoid) {
+    return <#initializer#>;
+}
+
+Humanoid &Field::findClosestHuman(Humanoid *humanoid) {
+    return <#initializer#>;
 }

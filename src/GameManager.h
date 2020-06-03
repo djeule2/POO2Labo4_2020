@@ -13,7 +13,7 @@ public:
     void initializeGame();
     void startGame();
     void createHumanoid(int nbreVampire, int nbrHuman);
-    void loadListHumanoidGrid();
+    void updateDisplay();
     void readControl (const string msg, const int borneInf, const int borneSup, int &val);
     void showMenu();
     void handleCommand(const string &cmd);
@@ -23,13 +23,13 @@ public:
     int getHauteurGrille();
 
 private:
-    int _largeurGrille ;
-    int _hauteurGrille;
+    int _width ;
+    int _height;
     int _nbrVambire;
     int _nbrHumain;
     unsigned turn = 0;
     Field * _field;
-    Grille* _grille;
+    DisplayField* _display;
     bool _gameOver;
     static const char QUIT='q', STATTISTIQUE= 's', NEXT= 'n';
 };
