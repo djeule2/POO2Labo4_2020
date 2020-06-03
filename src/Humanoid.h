@@ -6,19 +6,20 @@
 #define POO2LABO4_2020_HUMANOID_H
 
 #include "Action.h"
-#include "Field.h"
 
 class Field;
+class Move;
 class Action;
 
 class Humanoid {
-private:
+protected:
     char _name;
     int _xPosition;
     int _yPosition;
     bool _isAlive = true;
-    std::pair<int, int> _destination;
     Action *action;
+    Action* moveToSomeone(Humanoid *target);
+    Action* moveRandom();
 public:
     Humanoid(char name, int x, int y);
 

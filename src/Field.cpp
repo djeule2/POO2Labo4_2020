@@ -74,6 +74,7 @@ Humanoid* Field::findNearestHumanoid(Humanoid* humanoid){
 }
 
 Humanoid* Field::findNearestVampire(Humanoid *humanoid) {
+
     int first=0 ;
     double shortdistance;
     double distance;

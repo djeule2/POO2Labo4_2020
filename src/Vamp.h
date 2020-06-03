@@ -10,8 +10,9 @@
 
 class Vamp : public Action {
 public :
-    explicit Vamp(Humanoid * target);
-    void execute(Field & field) override;
+    explicit Vamp(Humanoid *target);
+
+    void execute(Field &field) override;
 };
 
 

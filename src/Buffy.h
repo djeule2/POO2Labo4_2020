@@ -10,10 +10,11 @@
 
 class Buffy : public Humanoid {
 private:
+    Action * secondAction;
 public:
     Buffy(int x, int y);
-    void setAction(Field& field);
-    void executeAction(Field& field);
+    void setAction(Field& field) override;
+    void executeAction(Field& field) override;
 
 
 };
