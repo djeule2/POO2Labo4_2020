@@ -23,9 +23,8 @@ int Field::nexTurn(){
     cout << "nextTurn kill things" << endl;
     // Enlever les humanoides tués
     for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); ) {
-        cout << (*it)->isAlive() << endl;
         if (!(*it)->isAlive()) {
-            cout << "nextTurn suppression du pointeur" << endl;
+            cout << "nextTurn suppression du pointeur de : " << (*it)->getName() << endl;
             delete *it; // destruction de l’humanoide référencé
             cout << "nextTurn suppression de la liste" << endl;
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
@@ -77,7 +76,6 @@ Humanoid* Field::findClosestBeing(Humanoid *humanoid, char name) {
             }
         }
     }
-    cout << " fin boucle for" << endl;
     return closestHuman;
 }
 
