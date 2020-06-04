@@ -16,9 +16,7 @@ void Human::setAction(Field &field) {
     if (!action) {
         delete action;
     }
-    action = new Move(this,
-                      _xPosition + Utils::getRandomNumber(-1, 1),
-                      _yPosition + Utils::getRandomNumber(-1, 1));
+    action = moveRandom(field.getWidth(), field.getHeight());
 }
 
 void Human::executeAction(Field &field) {

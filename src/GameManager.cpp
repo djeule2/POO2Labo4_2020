@@ -8,10 +8,7 @@
 #include "Vampire.h"
 #include "Utils.h"
 
-GameManager::GameManager() {
-    _field = new Field();
-
-}
+GameManager::GameManager() {}
 
 GameManager::~GameManager(){
     delete _field;
@@ -23,6 +20,7 @@ void GameManager::initializeGame() {
     readControl("Hauteur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, _height);
     readControl("Nombres humains", 0, _width * _height - 1, _nbrHumain);
     readControl("Nombres Vampires", 0, _width * _height - _nbrHumain - 1, _nbrVambire);
+    _field = new Field(_width, _height);
 }
 
 void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {

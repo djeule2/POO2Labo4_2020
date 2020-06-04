@@ -40,8 +40,10 @@ Action* Humanoid::moveToSomeone(Humanoid *target) {
     return new Move(this, _xPosition + xMove, _yPosition + yMove);
 }
 
-Action *Humanoid::moveRandom() {
-    return new Move(this,
-                    _xPosition + Utils::getRandomNumber(-1, 1),
-                    _yPosition + Utils::getRandomNumber(-1, 1));
+Action *Humanoid::moveRandom(int width, int height) {
+    int xMove = Utils::getRandomNumber(-1, 1);
+    int yMove = Utils::getRandomNumber(-1, 1);
+    xMove = _xPosition + xMove >= width ? _xPosition - xMove : _xPosition + xMove;
+    yMove = _yPosition + yMove >= width ? _yPosition - yMove : _yPosition + yMove;
+    return new Move(this, xMove, yMove);
 }

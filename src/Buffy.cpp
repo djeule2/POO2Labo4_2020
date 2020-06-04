@@ -22,7 +22,7 @@ void Buffy::setAction(Field &field) {
 
     if(!target) {
         cout << "Buffy bouge aleatoirement" << endl;
-        action = moveRandom();
+        action = moveRandom(field.getWidth(), field.getHeight());
     } else if(field.distanceBetweenHumanoid(this, target) > sqrt(8)) {
         cout << "Buffy se déplace vers quelqu'un" << endl;
         action = moveToSomeone(target);

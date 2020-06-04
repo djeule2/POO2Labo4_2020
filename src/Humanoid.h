@@ -19,7 +19,7 @@ protected:
     bool _isAlive;
     Action *action;
     Action* moveToSomeone(Humanoid *target);
-    Action* moveRandom();
+    Action* moveRandom(int width, int height);
 public:
     Humanoid(char name, int x, int y);
 

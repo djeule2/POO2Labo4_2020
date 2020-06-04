@@ -15,7 +15,7 @@ class Humanoid;
 using namespace std;
 class Field {
 public:
-    Field();
+    explicit Field(int width, int height);
 
     /**
      *cette méthode permet pour chaque humanoïde de gérer un tour de simulation
@@ -29,23 +29,18 @@ public:
      */
     void addHumanoid(Humanoid* humanoid);
 
-    /**
-     * Méthode qui permet de trouver l'humanoïde, instance d'une classe donnée, le  plus
-     * proche d'un humanoïde donné.
-     * @param humanoid
-     * @return
-     */
-    Humanoid& humanoidNeighbor(Humanoid& humanoid)const ;
-
-
     list<Humanoid*> getListHumanoid();
     bool content (Humanoid* humanoid);
-    Humanoid* findNearestHumanoid(Humanoid* humanoid);
     Humanoid* findClosestBeing(Humanoid* humanoid, char);
+    void reset();
+    int getWidth();
+    int getHeight();
 
-    double distanceBetweenHumanoid(const Humanoid* humanoidfirst, const Humanoid* humanoidsecond);
+    double distanceBetweenHumanoid(const Humanoid* first, const Humanoid* second);
 
 private:
+    int height;
+    int width;
     unsigned turn = 0;
     std::list <Humanoid*> _humanoids;
     static const char QUIT='q', STATTISTIQUE= 's', NEXT= 'n';

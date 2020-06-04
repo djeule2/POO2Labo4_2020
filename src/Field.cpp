@@ -4,8 +4,9 @@
 
 #include <cmath>
 #include "Field.h"
+#include "Utils.h"
 
-Field::Field(){}
+Field::Field(int width, int height) : width(width), height(height){}
 
 
 int Field::nexTurn(){
@@ -78,4 +79,19 @@ Humanoid* Field::findClosestBeing(Humanoid *humanoid, char name) {
     }
     cout << " fin boucle for" << endl;
     return closestHuman;
+}
+
+void Field::reset() {
+    for(list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
+        (*it)->setPosition(Utils::getRandomNumber(0, width), Utils::getRandomNumber(0, height));
+    }
+
+}
+
+int Field::getWidth() {
+    return width;
+}
+
+int Field::getHeight() {
+    return height;
 }
