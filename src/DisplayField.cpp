@@ -34,5 +34,6 @@ void DisplayField::display() {
 }
 
 void DisplayField::update(Humanoid &humanoid) {
-    field[humanoid.getxPosition()][humanoid.getyPosition()] = humanoid.getName();
+   field[humanoid.getyPosition()][humanoid.getxPosition()] = humanoid.getName();
+
 }

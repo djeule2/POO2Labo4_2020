@@ -6,6 +6,8 @@ int main() {
     gm.initializeGame();
     gm.startGame();
 
+    gm.start();
+
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }
