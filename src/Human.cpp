@@ -20,7 +20,9 @@ void Human::setAction(Field &field) {
 }
 
 void Human::executeAction(Field &field) {
-    action->execute(field);
+    if(action) {
+        action->execute(field);
+    }
 }
 
 

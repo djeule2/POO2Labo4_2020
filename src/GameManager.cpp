@@ -41,6 +41,7 @@ void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {
 
 void GameManager::updateDisplay() {
     list<Humanoid*>humanoids = _field->getListHumanoid();
+    _display->initialize();
     for (list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end(); ++it) {
          _display->update(**it);
