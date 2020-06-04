@@ -1,7 +1,17 @@
-//
-// Created by Lenovo T50s on 14.05.2020.
-//
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo4 -Buffy
+ Fichier     : Field.cpp
+ Auteur(s)   : Alves Claude-André, Olivier Djeuzlezeck
+ Date        : 03.06.2020
 
+ But         : Fichier d'implémentation de la classe Field.
+
+ Remarque(s) : -
+
+ Compilateur : gcc 7.4.0
+ -----------------------------------------------------------------------------------
+ */
 #include <cmath>
 #include "Field.h"
 #include "Utils.h"
@@ -80,10 +90,6 @@ int Field::getHeight() {
     return height;
 }
 
-/**
- * Returns the state of the field, values are 1 if buffy wins 0 is game is not over -1 if no humans are left
- * @return
- */
 int Field::isGameOver() {
     bool isThereAVamp = false;
     bool isThereAHuman = false;

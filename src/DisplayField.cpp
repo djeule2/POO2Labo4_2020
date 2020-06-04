@@ -1,7 +1,17 @@
-//
-// Created by Lenovo T50s on 14.05.2020.
-//
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo4 -Buffy
+ Fichier     : DisplayField.cpp
+ Auteur(s)   : Alves Claude-André, Olivier Djeuzlezeck
+ Date        : 03.06.2020
 
+ But         : Classe d'implémentation de DisplayField.
+
+ Remarque(s) : -
+
+ Compilateur : gcc 7.4.0
+ -----------------------------------------------------------------------------------
+ */
 #include <iomanip>
 #include <iostream>
 #include "DisplayField.h"
@@ -34,6 +44,5 @@ void DisplayField::display() {
 }
 
 void DisplayField::update(Humanoid &humanoid) {
-   field[humanoid.getyPosition()][humanoid.getxPosition()] = humanoid.getName();
-
+    field[humanoid.getyPosition()][humanoid.getxPosition()] = humanoid.getName();
 }

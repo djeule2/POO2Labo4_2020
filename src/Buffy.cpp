@@ -1,7 +1,17 @@
-//
-// Created by Lenovo T50s on 14.05.2020.
-//
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo4 -Buffy
+ Fichier     : Buffy.cpp
+ Auteur(s)   : Alves Claude-André, Olivier Djeuzlezeck
+ Date        : 03.06.2020
 
+ But         : Fichier d'implémentation de la classe Buffy.
+
+ Remarque(s) : -
+
+ Compilateur : gcc 7.4.0
+ -----------------------------------------------------------------------------------
+ */
 #include "Buffy.h"
 #include "Kill.h"
 #include <cmath>

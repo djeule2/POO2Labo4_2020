@@ -1,13 +1,23 @@
-//
-// Created by Lenovo T50s on 03.06.2020.
-//
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo4 -Buffy
+ Fichier     : GameManager.cpp
+ Auteur(s)   : Alves Claude-André, Olivier Djeuzlezeck
+ Date        : 03.06.2020
 
+ But         : Fichier d'implémentation de la classe GameManager.
+
+ Remarque(s) : -
+
+ Compilateur : gcc 7.4.0
+ -----------------------------------------------------------------------------------
+ */
 #include "GameManager.h"
 #include "Stats.h"
 
 GameManager::GameManager() {}
 
-GameManager::~GameManager(){
+GameManager::~GameManager() {
     delete field;
     delete display;
 }
@@ -21,11 +31,11 @@ void GameManager::initializeGame() {
 }
 
 void GameManager::updateDisplay() {
-    list<Humanoid*>humanoids = field->getListHumanoid();
+    list<Humanoid *> humanoids = field->getListHumanoid();
     display->initialize();
-    for (list<Humanoid*>::iterator it = humanoids.begin();
+    for (list<Humanoid *>::iterator it = humanoids.begin();
          it != humanoids.end(); ++it) {
-         display->update(**it);
+        display->update(**it);
     }
 }
 
@@ -61,7 +71,7 @@ void GameManager::handleCommand(const string &cmd) {
             display->display();
             break;
         case STATTISTIQUE:
-            cout << Stats::produceStats(10000, field) << endl;
+            cout << Stats::produceStats(10000, new Field(width, height, vambire, human)) << endl;
             break;
         case QUIT:
             break;
@@ -83,7 +93,7 @@ void GameManager::start() {
     do {
         cout << turn << ">";
         showMenu();
-        getline (std::cin, commande);
+        getline(std::cin, commande);
 
         handleCommand(commande);
 

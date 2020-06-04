@@ -1,7 +1,17 @@
-//
-// Created by Lenovo T50s on 14.05.2020.
-//
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo4 -Buffy
+ Fichier     : Humanoid.cpp
+ Auteur(s)   : Alves Claude-André, Olivier Djeuzlezeck
+ Date        : 03.06.2020
 
+ But         : Fichier d'implémentation de la classe Humanoid.
+
+ Remarque(s) : -
+
+ Compilateur : gcc 7.4.0
+ -----------------------------------------------------------------------------------
+ */
 #include "Humanoid.h"
 #include "Utils.h"
 #include "Move.h"
@@ -34,7 +44,7 @@ void Humanoid::kill() {
     dead = false;
 }
 
-Action* Humanoid::moveToSomeone(Humanoid *target) {
+Action *Humanoid::moveToSomeone(Humanoid *target) {
     int xMove = this->xPosition > target->getxPosition() ? -1 : this->xPosition == target->getxPosition() ? 0 : 1;
     int yMove = this->yPosition > target->getyPosition() ? -1 : this->yPosition == target->getyPosition() ? 0 : 1;
     return new Move(this, xPosition + xMove, yPosition + yMove);

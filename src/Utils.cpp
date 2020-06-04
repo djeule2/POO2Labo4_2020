@@ -1,8 +1,18 @@
-//
-// Created by claudealves on 03.06.20.
-//
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo4 -Buffy
+ Fichier     : Utils.cpp
+ Auteur(s)   : Alves Claude-André, Olivier Djeuzlezeck
+ Date        : 03.06.2020
 
-#import <random>
+ But         : fichier d'implémentation de la classe Utils.
+
+ Remarque(s) : -
+
+ Compilateur : gcc 7.4.0
+ -----------------------------------------------------------------------------------
+ */
+#include <random>
 #include <chrono>
 #include "Utils.h"
 
