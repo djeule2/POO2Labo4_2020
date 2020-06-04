@@ -24,8 +24,10 @@ int Field::nexTurn(){
     for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); ) {
         cout << (*it)->isAlive() << endl;
         if (!(*it)->isAlive()) {
-            it = _humanoids.erase(it); // suppression de l’élément dans la liste
+            cout << "nextTurn suppression du pointeur" << endl;
             delete *it; // destruction de l’humanoide référencé
+            cout << "nextTurn suppression de la liste" << endl;
+            it = _humanoids.erase(it); // suppression de l’élément dans la liste
         } else
             ++it;
     }
@@ -60,42 +62,20 @@ double Field::distanceBetweenHumanoid( const Humanoid* humanoidfirst, const Huma
             pow((humanoidfirst->getyPosition()-humanoidsecond->getyPosition()),2 ));
 }
 
-Humanoid* Field::findNearestHumanoid(Humanoid* humanoid){
-    double shortdistance=distanceBetweenHumanoid(humanoid, _humanoids.front());
-    double distance;
-    Humanoid* tempHumanoid ;
-
+Humanoid* Field::findClosestBeing(Humanoid *humanoid, char name) {
+    Humanoid* closestHuman = nullptr;
     for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); ++it ){
-        distance = distanceBetweenHumanoid(humanoid, *it);
-        if(distance<=shortdistance) {
-            shortdistance = distance;
-            tempHumanoid = *it;
-        }
-
-    }
-    return tempHumanoid;
-}
-
-Humanoid* Field::findNearestVampire(Humanoid *humanoid) {
-    list<Humanoid*>::iterator it = _humanoids.begin();
-    Humanoid* closestVamp = *it;
-    for (; it != _humanoids.end(); ++it ){
-        if((*it)->getName() == 'v'
-            && distanceBetweenHumanoid(humanoid, *it) < distanceBetweenHumanoid(humanoid, closestVamp)) {
-            closestVamp = *it;
+        if(!closestHuman) {
+            if((*it)->getName() == name) {
+                closestHuman = *it;
+            }
+        } else {
+            if((*it)->getName() == name
+               && distanceBetweenHumanoid(humanoid, *it) < distanceBetweenHumanoid(humanoid, closestHuman)) {
+                closestHuman = *it;
+            }
         }
     }
-    return closestVamp;
-}
-
-Humanoid* Field::findClosestHuman(Humanoid *humanoid) {
-    list<Humanoid*>::iterator it = _humanoids.begin();
-    Humanoid* closestHuman = *it;
-    for (; it != _humanoids.end(); ++it ){
-        if((*it)->getName() == 'h'
-           && distanceBetweenHumanoid(humanoid, *it) < distanceBetweenHumanoid(humanoid, closestHuman)) {
-            closestHuman = *it;
-        }
-    }
+    cout << " fin boucle for" << endl;
     return closestHuman;
 }

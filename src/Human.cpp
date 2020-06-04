@@ -12,7 +12,7 @@ Human::Human(int x, int y) : Humanoid('h', x, y) {
 }
 
 void Human::setAction(Field &field) {
-    cout << "Human setAction" << endl;
+    cout << "Human setAction" << " coordonnees : " << _xPosition << " " << _yPosition <<  endl;
     if (!action) {
         delete action;
     }
@@ -22,7 +22,6 @@ void Human::setAction(Field &field) {
 }
 
 void Human::executeAction(Field &field) {
-    cout << "Human executeAction" << endl;
     action->execute(field);
 }
 

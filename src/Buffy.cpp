@@ -10,8 +10,9 @@ Buffy::Buffy(int x, int y) : Humanoid('B', x, y), secondAction(nullptr) {
 }
 
 void Buffy::setAction(Field &field) {
-    cout << "Buffy setAction" << endl;
-    Humanoid* target = field.findNearestVampire(this);
+    cout << "buffy en vie? : " << _isAlive << endl;
+    cout << "Buffy setAction" << " coordonnees : " << _xPosition << " " << _yPosition << endl;
+    Humanoid* target = field.findClosestBeing(this, 'v');
     if(!action) {
         delete action;
     }
@@ -23,14 +24,14 @@ void Buffy::setAction(Field &field) {
         cout << "Buffy bouge aleatoirement" << endl;
         action = moveRandom();
     } else if(field.distanceBetweenHumanoid(this, target) > sqrt(8)) {
-        cout << "Buffy buffy se déplace vers quelqu'un" << endl;
+        cout << "Buffy se déplace vers quelqu'un" << endl;
         action = moveToSomeone(target);
-        cout << "Buffy buffy se déplace vers quelqu'un" << endl;
+        cout << "Buffy se déplace vers quelqu'un" << endl;
         secondAction = moveToSomeone(target);
     } else {
-        cout << "Buffy buffy se déplace vers quelqu'un" << endl;
+        cout << "Buffy se déplace vers quelqu'un" << endl;
         action = moveToSomeone(target);
-        cout << "Buffy buffy tue" << endl;
+        cout << "Buffy tue" << endl;
         secondAction = new Kill(target);
     }
     //get the nearest vampire
@@ -40,7 +41,6 @@ void Buffy::setAction(Field &field) {
 }
 
 void Buffy::executeAction(Field &field) {
-    cout << "Buffy executeAction" << endl;
     action->execute(field);
     // Buffy est très forte elle a deux actions
     secondAction->execute(field);

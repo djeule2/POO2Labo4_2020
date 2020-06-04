@@ -9,7 +9,7 @@
 
 void Vamp::execute(Field &field) {
     if(Utils::getRandomNumber(0, 1) == 1) {
-        field.addHumanoid((Humanoid*)new Vampire(target->getxPosition(), target->getyPosition()));
+        field.addHumanoid(new Vampire(target->getxPosition(), target->getyPosition()));
     }
     target->kill();
 }

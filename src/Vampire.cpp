@@ -10,8 +10,8 @@
 Vampire::Vampire(int x, int y) : Humanoid('v', x, y) {}
 
 void Vampire::setAction(Field &field) {
-    cout << "Vampire setAction" << endl;
-    Humanoid *target = field.findClosestHuman(this);
+    cout << "Vampire setAction" << " coordonnees : " << _xPosition << " " << _yPosition <<  endl;
+    Humanoid *target = field.findClosestBeing(this, 'h');
     if (!action) {
         delete action;
     }
@@ -32,7 +32,6 @@ void Vampire::setAction(Field &field) {
 }
 
 void Vampire::executeAction(Field &field) {
-    cout << "Vampire executeAction" << endl;
     action->execute(field);
 }
 
