@@ -3,8 +3,6 @@
 //
 
 #include "Human.h"
-#include "Utils.h"
-#include "Move.h"
 
 using namespace std;
 

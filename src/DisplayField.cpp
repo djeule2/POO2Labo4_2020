@@ -8,29 +8,29 @@
 
 using namespace std;
 
-DisplayField::DisplayField(int width, int height) : _width(width), _height(height) {
+DisplayField::DisplayField(int width, int height) : width(width), height(height) {
     field = vector<vector<char>>(height, vector<char>(width));
     this->initialize();
 }
 
 void DisplayField::initialize() {
-    for (int row = 0; row < _height; row++) {
-        for (int column = 0; column < _width; column++) {
+    for (int row = 0; row < height; row++) {
+        for (int column = 0; column < width; column++) {
             field[row][column] = ' ';
         }
     }
 }
 
 void DisplayField::display() {
-    cout << '+' << setfill('-') << setw(_width + 1) << "+" << endl;
-    for (int row = 0; row < _height; row++) {
+    cout << '+' << setfill('-') << setw(width + 1) << "+" << endl;
+    for (int row = 0; row < height; row++) {
         cout << ":";
-        for (int column = 0; column < _width; column++) {
+        for (int column = 0; column < width; column++) {
             cout << field[row][column];
         }
         cout << ":" << endl;
     }
-    cout << '+' << setfill('-') << setw(_width + 1) << "+" << endl;
+    cout << '+' << setfill('-') << setw(width + 1) << "+" << endl;
 }
 
 void DisplayField::update(Humanoid &humanoid) {

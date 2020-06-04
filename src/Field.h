@@ -31,7 +31,6 @@ public:
 
     void createHumanoids(int nbreVampire, int nbrHuman);
     list<Humanoid*> getListHumanoid();
-    bool content (Humanoid* humanoid);
     Humanoid* findClosestBeing(Humanoid* humanoid, char);
     void reset();
     void clear();
@@ -48,7 +47,6 @@ private:
     int humans;
     unsigned turn = 0;
     std::list <Humanoid*> _humanoids;
-    static const char QUIT='q', STATTISTIQUE= 's', NEXT= 'n';
 
 };
 

@@ -3,33 +3,29 @@
 //
 
 #include "GameManager.h"
-#include "Buffy.h"
-#include "Human.h"
-#include "Vampire.h"
-#include "Utils.h"
 #include "Stats.h"
 
 GameManager::GameManager() {}
 
 GameManager::~GameManager(){
-    delete _field;
-    delete _display;
+    delete field;
+    delete display;
 }
 
 void GameManager::initializeGame() {
-    readControl("Largeur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, _width);
-    readControl("Hauteur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, _height);
-    readControl("Nombres humains", 0, _width * _height - 1, _nbrHumain);
-    readControl("Nombres Vampires", 0, _width * _height - _nbrHumain - 1, _nbrVambire);
-    _field = new Field(_width, _height, _nbrVambire, _nbrHumain);
+    readControl("Largeur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, width);
+    readControl("Hauteur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, height);
+    readControl("Nombres humains", 0, width * height - 1, human);
+    readControl("Nombres Vampires", 0, width * height - human - 1, vambire);
+    field = new Field(width, height, vambire, human);
 }
 
 void GameManager::updateDisplay() {
-    list<Humanoid*>humanoids = _field->getListHumanoid();
-    _display->initialize();
+    list<Humanoid*>humanoids = field->getListHumanoid();
+    display->initialize();
     for (list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end(); ++it) {
-         _display->update(**it);
+         display->update(**it);
     }
 }
 
@@ -60,12 +56,12 @@ void GameManager::readControl(const string msg, const int borneInf, const int bo
 void GameManager::handleCommand(const string &cmd) {
     switch (cmd.at(0)) {
         case NEXT:
-            _field->nexTurn();
+            field->nexTurn();
             updateDisplay();
-            _display->display();
+            display->display();
             break;
         case STATTISTIQUE:
-            cout << Stats::produceStats(10000, _field) << endl;
+            cout << Stats::produceStats(10000, field) << endl;
             break;
         case QUIT:
             break;
@@ -79,10 +75,10 @@ void GameManager::handleCommand(const string &cmd) {
 void GameManager::start() {
     string commande;
     initializeGame();
-    _display = new DisplayField(_width, _height);
-    _field->createHumanoids(_nbrVambire, _nbrHumain);
+    display = new DisplayField(width, height);
+    field->createHumanoids(vambire, human);
     updateDisplay();
-    _display->display();
+    display->display();
 
     do {
         cout << turn << ">";
@@ -92,8 +88,4 @@ void GameManager::start() {
         handleCommand(commande);
 
     } while (commande.at(0) != QUIT);
-}
-
-void GameManager::produceStats() {
-
 }

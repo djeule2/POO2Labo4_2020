@@ -17,16 +17,15 @@ public:
     void readControl (const string msg, const int borneInf, const int borneSup, int &val);
     void showMenu();
     void handleCommand(const string &cmd);
-    void produceStats();
 
 private:
-    int _width ;
-    int _height;
-    int _nbrVambire;
-    int _nbrHumain;
+    int width ;
+    int height;
+    int vambire;
+    int human;
     unsigned turn = 0;
-    Field * _field;
-    DisplayField* _display;
+    Field * field;
+    DisplayField* display;
     static const char QUIT='q', STATTISTIQUE= 's', NEXT= 'n';
 };
 

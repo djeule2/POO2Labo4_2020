@@ -6,44 +6,44 @@
 #include "Utils.h"
 #include "Move.h"
 
-Humanoid::Humanoid(char name, int x, int y) : _name(name), _xPosition(x), _yPosition(y), action(nullptr), _isAlive(true) {
+Humanoid::Humanoid(char name, int x, int y) : name(name), xPosition(x), yPosition(y), action(nullptr), dead(true) {
 }
 
 char Humanoid::getName() const {
-    return _name;
+    return name;
 }
 
 int Humanoid::getxPosition() const {
-    return _xPosition;
+    return xPosition;
 }
 
 int Humanoid::getyPosition() const {
-    return _yPosition;
+    return yPosition;
 }
 
 void Humanoid::setPosition(int x, int y) {
-    _xPosition = x;
-    _yPosition = y;
+    xPosition = x;
+    yPosition = y;
 }
 
 bool Humanoid::isAlive() {
-    return _isAlive;
+    return dead;
 }
 
 void Humanoid::kill() {
-    _isAlive = false;
+    dead = false;
 }
 
 Action* Humanoid::moveToSomeone(Humanoid *target) {
-    int xMove = this->_xPosition > target->getxPosition() ? -1 : this->_xPosition == target->getxPosition() ? 0 : 1;
-    int yMove = this->_yPosition > target->getyPosition() ? -1 : this->_yPosition == target->getyPosition() ? 0 : 1;
-    return new Move(this, _xPosition + xMove, _yPosition + yMove);
+    int xMove = this->xPosition > target->getxPosition() ? -1 : this->xPosition == target->getxPosition() ? 0 : 1;
+    int yMove = this->yPosition > target->getyPosition() ? -1 : this->yPosition == target->getyPosition() ? 0 : 1;
+    return new Move(this, xPosition + xMove, yPosition + yMove);
 }
 
 Action *Humanoid::moveRandom(int width, int height) {
     int xMove = Utils::getRandomNumber(-1, 1);
     int yMove = Utils::getRandomNumber(-1, 1);
-    xMove = _xPosition + xMove >= width  || _xPosition + xMove < 0 ? _xPosition - xMove : _xPosition + xMove;
-    yMove = _yPosition + yMove >= height  || _yPosition + yMove < 0 ? _yPosition - yMove : _yPosition + yMove;
+    xMove = xPosition + xMove >= width || xPosition + xMove < 0 ? xPosition - xMove : xPosition + xMove;
+    yMove = yPosition + yMove >= height || yPosition + yMove < 0 ? yPosition - yMove : yPosition + yMove;
     return new Move(this, xMove, yMove);
 }

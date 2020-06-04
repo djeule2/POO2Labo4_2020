@@ -22,8 +22,8 @@ public:
     static const int BORNE_INF = 1;
     static const int BORNE_SUP = 100;
 private:
-    int _width;
-    int _height;
+    int width;
+    int height;
     vector<vector<char >> field;
 
 };

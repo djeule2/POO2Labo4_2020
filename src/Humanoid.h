@@ -13,10 +13,10 @@ class Action;
 
 class Humanoid {
 protected:
-    char _name;
-    int _xPosition;
-    int _yPosition;
-    bool _isAlive;
+    char name;
+    int xPosition;
+    int yPosition;
+    bool dead;
     Action *action;
     Action* moveToSomeone(Humanoid *target);
     Action* moveRandom(int width, int height);

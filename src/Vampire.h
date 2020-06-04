@@ -8,12 +8,14 @@
 
 #include "Humanoid.h"
 
-class Vampire: public Humanoid {
+class Vampire : public Humanoid {
 private:
 public:
     Vampire(int x, int y);
-    void setAction(Field& field);
-    void executeAction(Field& field);
+
+    void setAction(Field &field) override;
+
+    void executeAction(Field &field) override;
 };
 
 
