@@ -10,12 +10,7 @@
 
 GameManager::GameManager() {
     _field = new Field();
-    initializeGame();
-    _display = new DisplayField(_width, _height);
-    createHumanoid(_nbrVambire, _nbrHumain);
-    updateDisplay();
 
-    _display->display();
 }
 
 GameManager::~GameManager(){
@@ -32,17 +27,17 @@ void GameManager::initializeGame() {
 
 void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {
     //creation du Buffy
-    _field->addHumanoid(new Buffy(Utils::getRandomNumber(0, _width),
-                                  Utils::getRandomNumber(0, _height)));
+    _field->addHumanoid(new Buffy(Utils::getRandomNumber(0, _width-1),
+                                  Utils::getRandomNumber(0, _height-1)));
     for (int i = 0; i < nbrHuman; i++) {
         //creation de Human
-        _field->addHumanoid(new Human(Utils::getRandomNumber(0, _width),
-                                      Utils::getRandomNumber(0, _height)));
+        _field->addHumanoid(new Human(Utils::getRandomNumber(0, _width-1),
+                                      Utils::getRandomNumber(0, _height-1)));
     }
     for (int j = 0; j < nbreVampire; j++) {
         //creation Vampire
-        _field->addHumanoid(new Vampire(Utils::getRandomNumber(0, _width),
-                                        Utils::getRandomNumber(0, _height)));
+        _field->addHumanoid(new Vampire(Utils::getRandomNumber(0, _width-1),
+                                        Utils::getRandomNumber(0, _height-1)));
     }
 }
 
@@ -50,7 +45,6 @@ void GameManager::updateDisplay() {
     list<Humanoid*>humanoids = _field->getListHumanoid();
     for (_List_iterator<Humanoid *> it = humanoids.begin();
          it != humanoids.end(); ++it) {
-
          _display->update(**it);
     }
 }
@@ -91,6 +85,9 @@ void GameManager::readControl(const string msg, const int borneInf, const int bo
                  " - " << borneSup << "] : ";
         }
     }
+
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
 void GameManager::handleCommand(const string &cmd) {
@@ -110,10 +107,15 @@ void GameManager::handleCommand(const string &cmd) {
 
 void GameManager::start() {
     string commande;
+    initializeGame();
+    _display = new DisplayField(_width, _height);
+    createHumanoid(_nbrVambire, _nbrHumain);
+    updateDisplay();
+    _display->display();
 
     do {
         cout << turn << ">";
-        getline(cin, commande);
+        getline (std::cin, commande);
 
         handleCommand(commande);
     } while (commande.at(0) != QUIT);

@@ -9,7 +9,7 @@
 using namespace std;
 
 DisplayField::DisplayField(int width, int height) : _width(width), _height(height) {
-    field = vector<vector<char>>(width, vector<char>(height));
+    field = vector<vector<char>>(height, vector<char>(width));
     this->initialize();
 }
 
@@ -34,7 +34,6 @@ void DisplayField::display() {
 }
 
 void DisplayField::update(Humanoid &humanoid) {
-    cout<<humanoid.getxPosition()<<"--"<<humanoid.getyPosition()<<endl;
-   field[humanoid.getxPosition()][humanoid.getyPosition()] = humanoid.getName();
+   field[humanoid.getyPosition()][humanoid.getxPosition()] = humanoid.getName();
 
 }
