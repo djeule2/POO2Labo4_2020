@@ -15,8 +15,6 @@ public:
     Buffy(int x, int y);
     void setAction(Field& field) override;
     void executeAction(Field& field) override;
-
-
 };
 
 

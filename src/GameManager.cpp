@@ -94,7 +94,7 @@ void GameManager::handleCommand(const string &cmd) {
     switch (cmd.at(0)) {
         case NEXT:
             _field->nexTurn();
-            updateDisplay();
+            _display->display();
             break;
         case STATTISTIQUE:
             break;

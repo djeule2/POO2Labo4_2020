@@ -4,28 +4,33 @@
 
 #include <cmath>
 #include "Field.h"
-#include "Buffy.h"
-#include "Human.h"
-#include "Vampire.h"
 
 Field::Field(){}
 
 
 int Field::nexTurn(){
+    cout << "nextTurn setActions" << endl;
     // Déterminer les prochaines actions
-    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++)
+    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
         (*it)->setAction(*this);
+    }
+    cout << "nextTurn executeActions" << endl;
     // Executer les actions
-    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++)
+    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
         (*it)->executeAction(*this);
+    }
+    cout << "nextTurn kill things" << endl;
     // Enlever les humanoides tués
-    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); )
+    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); ) {
+        cout << (*it)->isAlive() << endl;
         if (!(*it)->isAlive()) {
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
             delete *it; // destruction de l’humanoide référencé
-        }
-        else
+        } else
             ++it;
+    }
+
+    cout << "endTurn" << endl;
     return turn++;
 }
 
@@ -41,7 +46,7 @@ list <Humanoid*> Field::getListHumanoid(){
 
 bool Field::content (Humanoid* humanoid){
     bool result = false;
-    for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
+    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); ++it ){
         if(*it == humanoid){
             result = true;
         }
@@ -51,10 +56,8 @@ bool Field::content (Humanoid* humanoid){
 }
 
 double Field::distanceBetweenHumanoid( const Humanoid* humanoidfirst, const Humanoid* humanoidsecond) {
-    double result;
-    result = sqrt(pow((humanoidfirst->getxPosition()-humanoidsecond->getxPosition()), 2)+
+    return sqrt(pow((humanoidfirst->getxPosition()-humanoidsecond->getxPosition()), 2)+
             pow((humanoidfirst->getyPosition()-humanoidsecond->getyPosition()),2 ));
-    return result;
 }
 
 Humanoid* Field::findNearestHumanoid(Humanoid* humanoid){
@@ -62,7 +65,7 @@ Humanoid* Field::findNearestHumanoid(Humanoid* humanoid){
     double distance;
     Humanoid* tempHumanoid ;
 
-    for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
+    for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); ++it ){
         distance = distanceBetweenHumanoid(humanoid, *it);
         if(distance<=shortdistance) {
             shortdistance = distance;
@@ -74,7 +77,7 @@ Humanoid* Field::findNearestHumanoid(Humanoid* humanoid){
 }
 
 Humanoid* Field::findNearestVampire(Humanoid *humanoid) {
-    _List_iterator<Humanoid *> it = _humanoids.begin();
+    list<Humanoid*>::iterator it = _humanoids.begin();
     Humanoid* closestVamp = *it;
     for (; it != _humanoids.end(); ++it ){
         if((*it)->getName() == 'v'
@@ -86,7 +89,7 @@ Humanoid* Field::findNearestVampire(Humanoid *humanoid) {
 }
 
 Humanoid* Field::findClosestHuman(Humanoid *humanoid) {
-    _List_iterator<Humanoid *> it = _humanoids.begin();
+    list<Humanoid*>::iterator it = _humanoids.begin();
     Humanoid* closestHuman = *it;
     for (; it != _humanoids.end(); ++it ){
         if((*it)->getName() == 'h'

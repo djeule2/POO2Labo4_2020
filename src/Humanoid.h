@@ -16,7 +16,7 @@ protected:
     char _name;
     int _xPosition;
     int _yPosition;
-    bool _isAlive = true;
+    bool _isAlive;
     Action *action;
     Action* moveToSomeone(Humanoid *target);
     Action* moveRandom();

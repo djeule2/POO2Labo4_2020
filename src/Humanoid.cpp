@@ -6,7 +6,7 @@
 #include "Utils.h"
 #include "Move.h"
 
-Humanoid::Humanoid(char name, int x, int y) : _name(name), _xPosition(x), _yPosition(y), action(nullptr) {
+Humanoid::Humanoid(char name, int x, int y) : _name(name), _xPosition(x), _yPosition(y), action(nullptr), _isAlive(true) {
 }
 
 char Humanoid::getName() const {
