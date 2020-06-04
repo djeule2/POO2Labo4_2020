@@ -3,6 +3,7 @@
 //
 
 #include "Buffy.h"
+#include "Kill.h"
 #include <cmath>
 
 Buffy::Buffy(int x, int y) : Humanoid('B', x, y), secondAction(nullptr) {
@@ -22,6 +23,9 @@ void Buffy::setAction(Field &field) {
     } else if(field.distanceBetweenHumanoid(this, target) > sqrt(8)) {
         action = moveToSomeone(target);
         secondAction = moveToSomeone(target);
+    } else {
+        action = moveToSomeone(target);
+        secondAction = new Kill(target);
     }
     //get the nearest vampire
     //if he's further than 2sqrt(2) chase after him
