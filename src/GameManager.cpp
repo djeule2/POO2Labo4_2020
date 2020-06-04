@@ -24,9 +24,6 @@ void GameManager::initializeGame() {
 }
 
 void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {
-    //creation du Buffy
-    _field->addHumanoid(new Buffy(Utils::getRandomNumber(0, _width-1),
-                                  Utils::getRandomNumber(0, _height-1)));
     for (int i = 0; i < nbrHuman; i++) {
         //creation de Human
         _field->addHumanoid(new Human(Utils::getRandomNumber(0, _width-1),
@@ -37,6 +34,9 @@ void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {
         _field->addHumanoid(new Vampire(Utils::getRandomNumber(0, _width-1),
                                         Utils::getRandomNumber(0, _height-1)));
     }
+    //creation du Buffy
+    _field->addHumanoid(new Buffy(Utils::getRandomNumber(0, _width-1),
+                                  Utils::getRandomNumber(0, _height-1)));
 }
 
 void GameManager::updateDisplay() {

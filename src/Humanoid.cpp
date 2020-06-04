@@ -35,15 +35,15 @@ void Humanoid::kill() {
 }
 
 Action* Humanoid::moveToSomeone(Humanoid *target) {
-    int xMove = this->_xPosition > target->getxPosition() ? 1 : this->_xPosition == target->getxPosition() ? 0 : -1;
-    int yMove = this->_yPosition > target->getyPosition() ? 1 : this->_yPosition == target->getyPosition() ? 0 : -1;
+    int xMove = this->_xPosition > target->getxPosition() ? -1 : this->_xPosition == target->getxPosition() ? 0 : 1;
+    int yMove = this->_yPosition > target->getyPosition() ? -1 : this->_yPosition == target->getyPosition() ? 0 : 1;
     return new Move(this, _xPosition + xMove, _yPosition + yMove);
 }
 
 Action *Humanoid::moveRandom(int width, int height) {
     int xMove = Utils::getRandomNumber(-1, 1);
     int yMove = Utils::getRandomNumber(-1, 1);
-    xMove = _xPosition + xMove >= width ? _xPosition - xMove : _xPosition + xMove;
-    yMove = _yPosition + yMove >= width ? _yPosition - yMove : _yPosition + yMove;
+    xMove = _xPosition + xMove >= width  || _xPosition + xMove < 0 ? _xPosition - xMove : _xPosition + xMove;
+    yMove = _yPosition + yMove >= height  || _yPosition + yMove < 0 ? _yPosition - yMove : _yPosition + yMove;
     return new Move(this, xMove, yMove);
 }
