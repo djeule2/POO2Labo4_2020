@@ -18,6 +18,6 @@ string Stats::produceStats(size_t simSize, Field *field) {
             numberOfVictorySims++;
         }
     }
-    stream << (numberOfVictorySims/simSize*100);
+    stream << ((double)numberOfVictorySims/(double)simSize*100.0);
     return stream.str();
 }

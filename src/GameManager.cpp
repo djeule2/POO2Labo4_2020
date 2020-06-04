@@ -65,7 +65,7 @@ void GameManager::handleCommand(const string &cmd) {
             _display->display();
             break;
         case STATTISTIQUE:
-            cout << Stats::produceStats(10000, _field) << endl;
+            cout << Stats::produceStats(10000, _field) << "%" << endl;
             break;
         case QUIT:
             break;
