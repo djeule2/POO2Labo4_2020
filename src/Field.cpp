@@ -72,46 +72,25 @@ Humanoid* Field::findNearestHumanoid(Humanoid* humanoid){
 }
 
 Humanoid* Field::findNearestVampire(Humanoid *humanoid) {
-
-    int first=0 ;
-    double shortdistance;
-    double distance;
-    Humanoid* tempHumanoid = nullptr ;
-
-    for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
-        distance = distanceBetweenHumanoid(humanoid, *it);
-        if((*it)->getName()=='v') {
-            if(first==0){
-                shortdistance=distanceBetweenHumanoid(humanoid, *it);
-                tempHumanoid = *it;
-                first++;
-            } else if(distance<shortdistance) {
-                shortdistance = distance;
-                tempHumanoid = *it;
-            }
+    _List_iterator<Humanoid *> it = _humanoids.begin();
+    Humanoid* closestVamp = *it;
+    for (; it != _humanoids.end(); ++it ){
+        if((*it)->getName() == 'v'
+            && distanceBetweenHumanoid(humanoid, *it) < distanceBetweenHumanoid(humanoid, closestVamp)) {
+            closestVamp = *it;
         }
     }
-    return tempHumanoid;
+    return closestVamp;
 }
 
 Humanoid* Field::findClosestHuman(Humanoid *humanoid) {
-    int first=0 ;
-    double shortdistance;
-    double distance;
-    Humanoid* tempHumanoid = nullptr ;
-
-    for (_List_iterator<Humanoid *> it = _humanoids.begin(); it != _humanoids.end(); ++it ){
-        distance = distanceBetweenHumanoid(humanoid, *it);
-        if((*it)->getName()=='h') {
-            if(first==0){
-                shortdistance=distanceBetweenHumanoid(humanoid, *it);
-                tempHumanoid = *it;
-                first++;
-            } else if(distance<shortdistance) {
-                    shortdistance = distance;
-                    tempHumanoid = *it;
-                }
-            }
+    _List_iterator<Humanoid *> it = _humanoids.begin();
+    Humanoid* closestHuman = *it;
+    for (; it != _humanoids.end(); ++it ){
+        if((*it)->getName() == 'h'
+           && distanceBetweenHumanoid(humanoid, *it) < distanceBetweenHumanoid(humanoid, closestHuman)) {
+            closestHuman = *it;
         }
-    return tempHumanoid;
+    }
+    return closestHuman;
 }

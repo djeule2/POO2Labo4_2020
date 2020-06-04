@@ -88,6 +88,8 @@ void GameManager::readControl(const string msg, const int borneInf, const int bo
 void GameManager::handleCommand(const string &cmd) {
     switch (cmd.at(0)) {
         case NEXT:
+            _field->nexTurn();
+            updateDisplay();
             break;
         case STATTISTIQUE:
             break;
