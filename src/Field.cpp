@@ -5,34 +5,31 @@
 #include <cmath>
 #include "Field.h"
 #include "Utils.h"
+#include "Human.h"
+#include "Vampire.h"
+#include "Buffy.h"
 
-Field::Field(int width, int height) : width(width), height(height){}
+Field::Field(int width, int height, int vampires, int humans) : width(width), height(height), vampires(vampires),
+                                                                humans(humans){}
 
 
 int Field::nexTurn(){
-    cout << "nextTurn setActions" << endl;
     // Déterminer les prochaines actions
     for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
         (*it)->setAction(*this);
     }
-    cout << "nextTurn executeActions" << endl;
     // Executer les actions
     for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
         (*it)->executeAction(*this);
     }
-    cout << "nextTurn kill things" << endl;
     // Enlever les humanoides tués
     for (list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); ) {
         if (!(*it)->isAlive()) {
-            cout << "nextTurn suppression du pointeur de : " << (*it)->getName() << endl;
             delete *it; // destruction de l’humanoide référencé
-            cout << "nextTurn suppression de la liste" << endl;
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
         } else
             ++it;
     }
-
-    cout << "endTurn" << endl;
     return turn++;
 }
 
@@ -78,6 +75,8 @@ Humanoid* Field::findClosestBeing(Humanoid *humanoid, char name) {
 }
 
 void Field::reset() {
+    clear();
+    createHumanoids(vampires, humans);
     for(list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
         (*it)->setPosition(Utils::getRandomNumber(0, width), Utils::getRandomNumber(0, height));
     }
@@ -90,4 +89,40 @@ int Field::getWidth() {
 
 int Field::getHeight() {
     return height;
+}
+/**
+ * Returns the state of the field, values are 1 if buffy wins 0 is game is not over -1 if no humans are left
+ * @return
+ */
+int Field::isGameOver() {
+    bool  isThereAVamp = false;
+    bool isThereAHuman = false;
+    for(list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
+        if((*it)->getName() == 'h') {
+            isThereAHuman = true;
+        } else if(((*it)->getName() == 'v')) {
+            isThereAVamp = true;
+        }
+    }
+    return isThereAVamp ? (isThereAHuman ? 0 : -1) : isThereAHuman ? 1 : -1;
+}
+
+void Field::clear() {
+    _humanoids.clear();
+}
+
+void Field::createHumanoids(int nbreVampire, int nbrHuman) {
+    for (int i = 0; i < nbrHuman; i++) {
+        //creation de Human
+        addHumanoid(new Human(Utils::getRandomNumber(0, width-1),
+                                      Utils::getRandomNumber(0, height-1)));
+    }
+    for (int j = 0; j < nbreVampire; j++) {
+        //creation Vampire
+        addHumanoid(new Vampire(Utils::getRandomNumber(0, width-1),
+                                        Utils::getRandomNumber(0, height-1)));
+    }
+    //creation du Buffy
+    addHumanoid(new Buffy(Utils::getRandomNumber(0, width-1),
+                                  Utils::getRandomNumber(0, height-1)));
 }

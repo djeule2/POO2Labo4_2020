@@ -10,7 +10,6 @@
 void Vamp::execute(Field &field) {
     if(Utils::getRandomNumber(0, 1) == 1) {
         field.addHumanoid(new Vampire(target->getxPosition(), target->getyPosition()));
-        cout << "le vampire a pu changer un humain" << endl;
     }
     target->kill();
 }

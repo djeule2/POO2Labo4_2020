@@ -7,6 +7,7 @@
 #include "Human.h"
 #include "Vampire.h"
 #include "Utils.h"
+#include "Stats.h"
 
 GameManager::GameManager() {}
 
@@ -20,23 +21,7 @@ void GameManager::initializeGame() {
     readControl("Hauteur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, _height);
     readControl("Nombres humains", 0, _width * _height - 1, _nbrHumain);
     readControl("Nombres Vampires", 0, _width * _height - _nbrHumain - 1, _nbrVambire);
-    _field = new Field(_width, _height);
-}
-
-void GameManager::createHumanoid(int nbreVampire, int nbrHuman) {
-    for (int i = 0; i < nbrHuman; i++) {
-        //creation de Human
-        _field->addHumanoid(new Human(Utils::getRandomNumber(0, _width-1),
-                                      Utils::getRandomNumber(0, _height-1)));
-    }
-    for (int j = 0; j < nbreVampire; j++) {
-        //creation Vampire
-        _field->addHumanoid(new Vampire(Utils::getRandomNumber(0, _width-1),
-                                        Utils::getRandomNumber(0, _height-1)));
-    }
-    //creation du Buffy
-    _field->addHumanoid(new Buffy(Utils::getRandomNumber(0, _width-1),
-                                  Utils::getRandomNumber(0, _height-1)));
+    _field = new Field(_width, _height, _nbrVambire, _nbrHumain);
 }
 
 void GameManager::updateDisplay() {
@@ -46,23 +31,6 @@ void GameManager::updateDisplay() {
          it != humanoids.end(); ++it) {
          _display->update(**it);
     }
-}
-
-
-void GameManager::setGameOver(bool gameOver) {
-    _gameOver = gameOver;
-}
-
-bool GameManager::isGameOver() {
-    return _gameOver;
-}
-
-int GameManager::getLageurGrille() {
-    return _width;
-}
-
-int GameManager::getHauteurGrille() {
-    return _height;
 }
 
 void GameManager::showMenu() {
@@ -97,6 +65,7 @@ void GameManager::handleCommand(const string &cmd) {
             _display->display();
             break;
         case STATTISTIQUE:
+            cout << Stats::produceStats(10000, _field) << endl;
             break;
         case QUIT:
             break;
@@ -111,7 +80,7 @@ void GameManager::start() {
     string commande;
     initializeGame();
     _display = new DisplayField(_width, _height);
-    createHumanoid(_nbrVambire, _nbrHumain);
+    _field->createHumanoids(_nbrVambire, _nbrHumain);
     updateDisplay();
     _display->display();
 
@@ -123,4 +92,8 @@ void GameManager::start() {
         handleCommand(commande);
 
     } while (commande.at(0) != QUIT);
+}
+
+void GameManager::produceStats() {
+
 }
