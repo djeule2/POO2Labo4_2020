@@ -11,19 +11,19 @@ Buffy::Buffy(int x, int y) : Humanoid('B', x, y), secondAction(nullptr) {
 
 void Buffy::setAction(Field &field) {
     cout << "Buffy setAction" << " coordonnees : " << _xPosition << " " << _yPosition << endl;
-    Humanoid* target = field.findClosestBeing(this, 'v');
-    if(!action) {
+    Humanoid *target = field.findClosestBeing(this, 'v');
+    if (!action) {
         delete action;
     }
-    if(!secondAction) {
+    if (!secondAction) {
         delete secondAction;
     }
 
-    if(!target) {
+    if (!target) {
         cout << "Buffy bouge aleatoirement" << endl;
         action = moveRandom(field.getWidth(), field.getHeight());
-        secondAction= moveRandom(field.getWidth(), field.getHeight());
-    } else if(field.distanceBetweenHumanoid(this, target) > sqrt(8)) {
+        secondAction = moveRandom(field.getWidth(), field.getHeight());
+    } else if (field.distanceBetweenHumanoid(this, target) > sqrt(8)) {
         cout << "Buffy se déplace vers quelqu'un" << endl;
         action = moveToSomeone(target);
         cout << "Buffy se déplace vers quelqu'un" << endl;
@@ -41,7 +41,9 @@ void Buffy::setAction(Field &field) {
 }
 
 void Buffy::executeAction(Field &field) {
-    action->execute(field);
-    // Buffy est très forte elle a deux actions
-    secondAction->execute(field);
+    if (action && secondAction) {
+        action->execute(field);
+        // Buffy est très forte elle a deux actions
+        secondAction->execute(field);
+    }
 }

@@ -41,9 +41,7 @@ void Field::addHumanoid(Humanoid* humanoid){
 }
 
 list <Humanoid*> Field::getListHumanoid(){
-
     return _humanoids;
-
 }
 
 bool Field::content (Humanoid* humanoid){
