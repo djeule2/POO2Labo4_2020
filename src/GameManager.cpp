@@ -23,10 +23,10 @@ GameManager::~GameManager() {
 }
 
 void GameManager::initializeGame() {
-    readControl("Largeur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, width);
-    readControl("Hauteur DisplayField", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, height);
-    readControl("Nombres humains", 0, width * height - 1, human);
-    readControl("Nombres Vampires", 0, width * height - human - 1, vambire);
+    readControl("la largeur du champs", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, width);
+    readControl("la hauteur du champs", DisplayField::BORNE_INF, DisplayField::BORNE_SUP, height);
+    readControl("le nombres de humains", 0, width * height - 1, human);
+    readControl("le nombres de Vampires", 0, width * height - human - 1, vambire);
     field = new Field(width, height, vambire, human);
 }
 
@@ -70,6 +70,7 @@ void GameManager::handleCommand(const string &cmd) {
             field->nexTurn();
             updateDisplay();
             display->display();
+            gameOver();
             break;
         case STATTISTIQUE:
             cout << Stats::produceStats(10000, new Field(width, height, vambire, human)) << endl;
@@ -92,7 +93,7 @@ void GameManager::start() {
     display->display();
 
     do {
-        cout << turn << ">";
+        cout << field->getTurn() << ">";
         showMenu();
         getline(std::cin, commande);
         if(!commande.size()) {
@@ -101,4 +102,20 @@ void GameManager::start() {
         handleCommand(commande);
 
     } while (commande.at(0) != QUIT);
+}
+
+void GameManager::gameOver() {
+    switch (field->isGameOver()) {
+        case -1:
+            field->reset();
+            cout << "Les vampires ont tués tous les humains :(" << endl;
+            break;
+        case 1:
+            field->reset();
+            cout << "Buffy a vaincu les vampires fastoche!" << endl;
+            break;
+        default:
+            break;
+    }
+
 }

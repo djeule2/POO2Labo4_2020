@@ -65,11 +65,15 @@ private:
      */
     void handleCommand(const string &cmd);
 
+    /**
+     * Méthode qui regarde si la parti en cours est toujours en cours perdu ou gagnée par buffy
+     */
+    void gameOver();
+
     int width;
     int height;
     int vambire;
     int human;
-    unsigned turn = 0;
     Field *field;
     DisplayField *display;
     static const char QUIT = 'q', STATTISTIQUE = 's', NEXT = 'n', ENTER = '\n';

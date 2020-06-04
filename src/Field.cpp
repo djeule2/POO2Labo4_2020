@@ -74,6 +74,7 @@ Humanoid *Field::findClosestBeing(Humanoid *humanoid, char name) {
 }
 
 void Field::reset() {
+    turn = 0;
     clear();
     createHumanoids(vampires, humans);
     for (list<Humanoid *>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
@@ -121,4 +122,8 @@ void Field::createHumanoids(int nbreVampire, int nbrHuman) {
     //creation du Buffy
     addHumanoid(new Buffy(Utils::getRandomNumber(0, width - 1),
                           Utils::getRandomNumber(0, height - 1)));
+}
+
+size_t Field::getTurn() {
+    return turn;
 }

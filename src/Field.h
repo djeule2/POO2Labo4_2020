@@ -106,6 +106,12 @@ public:
      */
     double distanceBetweenHumanoid(const Humanoid *first, const Humanoid *second);
 
+    /**
+     * Méthode qui retourne le tour actuel.
+     * @return
+     */
+    size_t getTurn();
+
 private:
     int height;
     int width;
