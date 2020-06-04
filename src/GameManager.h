@@ -72,7 +72,7 @@ private:
     unsigned turn = 0;
     Field *field;
     DisplayField *display;
-    static const char QUIT = 'q', STATTISTIQUE = 's', NEXT = 'n';
+    static const char QUIT = 'q', STATTISTIQUE = 's', NEXT = 'n', ENTER = '\n';
 };
 
 #endif

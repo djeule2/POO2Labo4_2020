@@ -41,7 +41,7 @@ void GameManager::updateDisplay() {
 
 void GameManager::showMenu() {
     cout << QUIT << ">quit :";
-    cout << STATTISTIQUE << ">tatisties :";
+    cout << STATTISTIQUE << ">tatistcs :";
     cout << NEXT << ">ext :";
 }
 
@@ -65,6 +65,7 @@ void GameManager::readControl(const string msg, const int borneInf, const int bo
 
 void GameManager::handleCommand(const string &cmd) {
     switch (cmd.at(0)) {
+        case ENTER:
         case NEXT:
             field->nexTurn();
             updateDisplay();
@@ -94,7 +95,9 @@ void GameManager::start() {
         cout << turn << ">";
         showMenu();
         getline(std::cin, commande);
-
+        if(!commande.size()) {
+            commande = ENTER;
+        }
         handleCommand(commande);
 
     } while (commande.at(0) != QUIT);
